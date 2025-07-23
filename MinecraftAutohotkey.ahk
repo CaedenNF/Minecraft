@@ -1,6 +1,6 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
-InstallMouseHook()
+InstallMouseHook
 
 ; Configuration
 minDelay := 45  ; Minimum delay between clicks in milliseconds
