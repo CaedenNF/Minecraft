@@ -1,36 +1,30 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
+InstallMouseHook()
 
 ; Configuration
 minDelay := 45  ; Minimum delay between clicks in milliseconds
 maxDelay := 70 ; Maximum delay between clicks in milliseconds
 
 #HotIf WinActive("ahk_class GLFW30")
-
-; For Mouse Button 5 (left clicks)
-leftClicking := false
+; Main loop for Mouse Button 5
 *XButton2::
-{
-    global leftClicking := true
-    while leftClicking
     {
-        Click
-        Sleep Random(minDelay, maxDelay)
+        while GetKeyState("XButton2", "P")
+        {
+            Click
+            Sleep Random(minDelay, maxDelay)
+        }
+        return
     }
-}
-*XButton2 up:: global leftClicking := false
-
-; For Mouse Button 4 (right clicks)
-rightClicking := false
+; Main loop for Mouse Button 4
 *XButton1::
-{
-    global rightClicking := true
-    while rightClicking
     {
-        Click "Right"
-        Sleep Random(minDelay, maxDelay)
+        while GetKeyState("XButton1", "P")
+        {
+            Click "Right"
+            Sleep Random(minDelay, maxDelay)
+        }
+        return
     }
-}
-*XButton1 up:: global rightClicking := false
-
 #HotIf
